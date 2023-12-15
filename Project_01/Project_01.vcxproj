@@ -159,9 +159,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
-    <ClInclude Include="GameEngine.h" />
+    <ClInclude Include="gameengine.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="shape.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\..\..\Downloads\sprite.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
