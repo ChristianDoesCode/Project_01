@@ -22,6 +22,9 @@ int main()
 
     Object myObject;
     myObject.setGravity(true);
+    myObject.setImage("sprite.png");
+    myObject.setSpriteTexture();
+    
 
     while (window.isOpen())
     {
@@ -38,9 +41,11 @@ int main()
         float deltaTime = dt.asSeconds();
 
         rect.setPosition(rectPosition);
+        myObject.setPositionVector(100, 100);
 
         window.clear();
         window.draw(rect);
+        myObject.draw(window);
         window.display();
     }
 }
