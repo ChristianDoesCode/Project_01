@@ -32,7 +32,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameEngine.h">
+    <ClInclude Include="gameengine.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="shape.h">

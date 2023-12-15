@@ -60,20 +60,32 @@ void Shape::setPositionVector(int xPos, int yPos)
 
 void Shape::setImage(std::string imagePath)
 {
-	if (!(this->image.loadFromFile(imagePath)))
+	if (!this->image.loadFromFile(imagePath))
 	{
-		std::cout << "Cannot load image";   //Load Image
+		std::cout << "Failed to load image from " << imagePath << std::endl;
 	}
 }
 
 void Shape::setSpriteTexture()
 {
-	this->texture.loadFromImage(this->image);
-	this->setTexture(texture);
+	if (!this->texture.loadFromImage(this->image))
+	{
+		std::cout << "Failed to create texture from image" << std::endl;
+	}
+	else
+	{
+		this->setTexture(texture);
+	}
 }
+
 
 void Shape::draw(sf::RenderWindow& window)
 {
 	window.draw(*this);
+}
+
+void Shape::setSize(float x, float y)
+{
+	this->setScale(x, y);
 }
 

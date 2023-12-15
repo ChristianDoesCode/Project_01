@@ -1,8 +1,8 @@
+//main.cpp
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "GameEngine.h"
 #include "object.h"
-#include "entity.h"
+#include "gameengine.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 1024
@@ -24,8 +24,14 @@ int main()
     myObject.setGravity(true);
     myObject.setImage("sprite.png");
     myObject.setSpriteTexture();
+    myObject.setSize(0.1f, 0.1f);
+    myObject.setPositionVector(100, 100);
+
+    GameEngine* Engine = new GameEngine();
+
     
 
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -40,8 +46,9 @@ int main()
         sf::Time dt = clock.restart();
         float deltaTime = dt.asSeconds();
 
+        Engine->applyGameEngine(myObject, deltaTime, SCREEN_WIDTH, SCREEN_HEIGHT);
+
         rect.setPosition(rectPosition);
-        myObject.setPositionVector(100, 100);
 
         window.clear();
         window.draw(rect);

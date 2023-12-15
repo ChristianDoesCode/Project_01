@@ -29,4 +29,5 @@ public:
 	void setImage(std::string imagePath);
 	void setSpriteTexture();
 	void draw(sf::RenderWindow& window);
+	void setSize(float x, float y);
 };
