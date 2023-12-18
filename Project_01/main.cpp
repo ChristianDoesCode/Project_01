@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "object.h"
 #include "gameengine.h"
+#include "gamecheck.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 1024
@@ -22,15 +23,15 @@ int main()
 
     Object myObject;
     myObject.setGravity(true);
-    myObject.setImage("sprite.png");
+    myObject.setImage("can.png");
     myObject.setSpriteTexture();
     myObject.setSize(0.1f, 0.1f);
     myObject.setPositionVector(100, 100);
+    //myObject.setYVelocity(10.0f);
+    //myObject.setXVelocity(-10.0f);
 
     GameEngine* Engine = new GameEngine();
-
-    
-
+    GameCheck* Check = new GameCheck();
     
     while (window.isOpen())
     {
@@ -42,14 +43,11 @@ int main()
                 window.close();
         }
 
-        // Time calculation
-        sf::Time dt = clock.restart();
-        float deltaTime = dt.asSeconds();
-
-        Engine->applyGameEngine(myObject, deltaTime, SCREEN_WIDTH, SCREEN_HEIGHT);
+        Engine->applyGameEngine(myObject, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+        Check->applyGameCheck(myObject);
 
         rect.setPosition(rectPosition);
-
+        
         window.clear();
         window.draw(rect);
         myObject.draw(window);

@@ -128,7 +128,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\MySDKs\SFML-2.6.1\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>openal32.lib;sfml-graphics.lib;sfml-system.lib;sfml-window.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>openal32.lib;sfml-graphics-d.lib;sfml-system-d.lib;sfml-window-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -152,6 +152,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="gamecheck.cpp" />
     <ClCompile Include="gameengine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="object.cpp" />
@@ -159,12 +160,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="entity.h" />
+    <ClInclude Include="gamecheck.h" />
     <ClInclude Include="gameengine.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="shape.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\..\Downloads\sprite.png" />
+    <Image Include="sprite.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

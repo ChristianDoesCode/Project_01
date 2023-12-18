@@ -3,12 +3,25 @@
 
 Shape::Shape()
 {
-
+	this->xVelocity = 0.0f;
+	this->yVelocity = 0.0f;
+	this->hasGravity = false;
+	this->isPlayer = true;
 }
 
 Shape::~Shape()
 {
 
+}
+
+bool Shape::getIsPlayer() const
+{
+	return isPlayer;
+}
+
+void Shape::setIsPlayer(bool isPlayer)
+{
+	this->isPlayer = isPlayer;
 }
 
 bool Shape::getGravity() const

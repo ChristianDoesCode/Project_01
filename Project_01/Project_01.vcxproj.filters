@@ -30,6 +30,9 @@
     <ClCompile Include="entity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gamecheck.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="gameengine.h">
@@ -44,9 +47,15 @@
     <ClInclude Include="entity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="gamecheck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\..\Downloads\sprite.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="sprite.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -9,6 +9,7 @@ private:
 	bool hasGravity;
 	float xVelocity;
 	float yVelocity;
+	bool isPlayer;
 	sf::Vector2f position;
 	sf::Image image;
 	sf::Texture texture;
@@ -17,6 +18,8 @@ public:
 	Shape();
 	~Shape();
 
+	bool getIsPlayer() const;
+	void setIsPlayer(bool isPlayer);
 	bool getGravity() const;
 	void setGravity(bool hasGravity);
 	float getXVelocity() const;

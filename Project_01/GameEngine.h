@@ -9,6 +9,7 @@ class GameEngine
 public:
 	GameEngine();
 	~GameEngine();
-	void applyGameEngine(Shape& shape, float deltaTime, int screenWidth, int screenHeight);
-	void applyGravity(Shape& shape, float deltaTime, int screenWidth, int screenHeight);
+	void applyGameEngine(Shape& shape, int screenWidth, int screenHeight, sf::Clock& clock);
+	void applyGravity(Shape& shape, int screenHeight, sf::Clock& clock);
+	void applyForce(Shape& shape, int screenWidth, int screenHeight);
 };
