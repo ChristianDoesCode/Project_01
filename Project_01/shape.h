@@ -12,8 +12,10 @@ private:
 	float xVelocity;
 	float yVelocity;
 	bool isPlayer;
+	bool isProjectile;
 	float spriteSizeX;
 	float spriteSizeY;
+	int level;
 	sf::Vector2f position;
 	sf::Image image;
 	sf::Texture texture;
@@ -40,4 +42,6 @@ public:
 	void draw(sf::RenderWindow& window);
 	void setSize(float x, float y);
 	void setViewBox(float x, float y);
+	bool getIsProjectile() const;
+	void setIsProjectile(bool isProjectile);
 };

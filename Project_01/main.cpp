@@ -1,7 +1,6 @@
 //main.cpp
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "object.h"
 #include "gameengine.h"
 #include "gamecheck.h"
 #include "background.h"
@@ -18,13 +17,21 @@ int main()
 
     Background background("background.jpg");
 
-    Object myObject;
-    myObject.setGravity(true);
+    Shape myObject;
+    myObject.setIsPlayer(true);
+    //myObject.setGravity(true);
     myObject.setImage("character.png");
     myObject.setSpriteTexture();
     myObject.setSize(1.0f, 1.0f);
     myObject.setPositionVector(100, 100);
     myObject.setViewBox(0,0);
+
+    Shape bullet;
+    bullet.setImage("can.png");
+    bullet.setSpriteTexture();
+    bullet.setSize(0.1f,0.1f);
+    bullet.setPositionVector(100 + 100, 100 + 50);
+    bullet.setXVelocity(5.0f);
 
     GameEngine* Engine = new GameEngine();
     GameCheck* Check = new GameCheck();
@@ -40,11 +47,13 @@ int main()
         }
 
         Engine->applyGameEngine(myObject, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+        Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
         Check->applyGameCheck(myObject, background);
         
         window.clear();
         background.draw(window);
         myObject.draw(window);
+        bullet.draw(window);
         window.display();
     }
 }

@@ -6,7 +6,8 @@ Shape::Shape()
 	this->xVelocity = 0.0f;
 	this->yVelocity = 0.0f;
 	this->hasGravity = false;
-	this->isPlayer = true;
+	this->isPlayer = false;
+	this->isProjectile = false;
 }
 
 Shape::~Shape()
@@ -117,4 +118,14 @@ float Shape::getSpriteSizeX() const
 float Shape::getSpriteSizeY() const
 {
 	return this->spriteSizeY;
+}
+
+bool Shape::getIsProjectile() const
+{
+	return this->isProjectile;
+}
+
+void Shape::setIsProjectile(bool isProjectile)
+{
+	this->isProjectile = isProjectile;
 }

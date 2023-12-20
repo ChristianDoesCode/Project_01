@@ -152,19 +152,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="background.cpp" />
-    <ClCompile Include="entity.cpp" />
     <ClCompile Include="gamecheck.cpp" />
     <ClCompile Include="gameengine.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="object.cpp" />
     <ClCompile Include="shape.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="background.h" />
-    <ClInclude Include="entity.h" />
     <ClInclude Include="gamecheck.h" />
     <ClInclude Include="gameengine.h" />
-    <ClInclude Include="object.h" />
     <ClInclude Include="shape.h" />
   </ItemGroup>
   <ItemGroup>
