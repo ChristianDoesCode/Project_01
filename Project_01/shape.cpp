@@ -87,6 +87,8 @@ void Shape::setSpriteTexture()
 	}
 	else
 	{
+		this->spriteSizeX = this->texture.getSize().x / 12.0;
+		this->spriteSizeY = this->texture.getSize().y / 4.0;
 		this->setTexture(texture);
 	}
 }
@@ -102,3 +104,17 @@ void Shape::setSize(float x, float y)
 	this->setScale(x, y);
 }
 
+void Shape::setViewBox(float x, float y)
+{
+	this->setTextureRect(sf::IntRect(x, y, this->spriteSizeX, this->spriteSizeY));
+}
+
+float Shape::getSpriteSizeX() const
+{
+	return this->spriteSizeX;
+}
+
+float Shape::getSpriteSizeY() const
+{
+	return this->spriteSizeY;
+}

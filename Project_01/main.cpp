@@ -4,6 +4,7 @@
 #include "object.h"
 #include "gameengine.h"
 #include "gamecheck.h"
+#include "background.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 1024
@@ -13,22 +14,17 @@ int main()
     sf::RenderWindow window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), "Game Engine");
     window.setFramerateLimit(60);
 
-    sf::RectangleShape rect;
-    sf::Vector2f rectPosition(600, 350);
-
-    rect.setPosition(rectPosition);
-    rect.setSize(sf::Vector2f(100, 100));
-
     sf::Clock clock;
+
+    Background background("background.jpg");
 
     Object myObject;
     myObject.setGravity(true);
-    myObject.setImage("can.png");
+    myObject.setImage("character.png");
     myObject.setSpriteTexture();
-    myObject.setSize(0.1f, 0.1f);
+    myObject.setSize(1.0f, 1.0f);
     myObject.setPositionVector(100, 100);
-    //myObject.setYVelocity(10.0f);
-    //myObject.setXVelocity(-10.0f);
+    myObject.setViewBox(0,0);
 
     GameEngine* Engine = new GameEngine();
     GameCheck* Check = new GameCheck();
@@ -44,12 +40,10 @@ int main()
         }
 
         Engine->applyGameEngine(myObject, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
-        Check->applyGameCheck(myObject);
-
-        rect.setPosition(rectPosition);
+        Check->applyGameCheck(myObject, background);
         
         window.clear();
-        window.draw(rect);
+        background.draw(window);
         myObject.draw(window);
         window.display();
     }

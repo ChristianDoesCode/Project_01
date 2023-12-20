@@ -3,6 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#define SCREEN_WIDTH 1024
+#define SCREEN_HEIGHT 1024
 class Shape : sf::Sprite
 {
 private:
@@ -10,6 +12,8 @@ private:
 	float xVelocity;
 	float yVelocity;
 	bool isPlayer;
+	float spriteSizeX;
+	float spriteSizeY;
 	sf::Vector2f position;
 	sf::Image image;
 	sf::Texture texture;
@@ -28,9 +32,12 @@ public:
 	void setYVelocity(float yVelocity);
 	float getPositionX() const;
 	float getPositionY() const;
+	float getSpriteSizeX() const;
+	float getSpriteSizeY() const;
 	void setPositionVector(int xPos, int yPos);
 	void setImage(std::string imagePath);
 	void setSpriteTexture();
 	void draw(sf::RenderWindow& window);
 	void setSize(float x, float y);
+	void setViewBox(float x, float y);
 };

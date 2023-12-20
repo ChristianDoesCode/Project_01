@@ -151,6 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="background.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="gamecheck.cpp" />
     <ClCompile Include="gameengine.cpp" />
@@ -159,6 +160,7 @@
     <ClCompile Include="shape.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="background.h" />
     <ClInclude Include="entity.h" />
     <ClInclude Include="gamecheck.h" />
     <ClInclude Include="gameengine.h" />

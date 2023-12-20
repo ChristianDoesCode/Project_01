@@ -42,8 +42,15 @@ void GameEngine::applyForce(Shape& shape, int screenWidth, int screenHeight)
 	//If the object is going to fast makes sure it does not go past the sides of the screen
 	else if ((shape.getXVelocity() >= (screenWidth - 100) - (shape.getPositionX() - 100)))
 	{
-		std::cout << "First else if loop ran!";
 		shape.setPositionVector(shape.getPositionX() + (screenWidth - 100) - shape.getPositionX(), shape.getPositionY());
+	}
+	else if (shape.getPositionX() >= screenWidth - 100)
+	{
+		shape.setPositionVector(shape.getPositionX() - 1, shape.getPositionY());
+	}
+	else if (shape.getPositionX() <= 0)
+	{
+		shape.setPositionVector(shape.getPositionX() + 1, shape.getPositionY());
 	}
 	if (!(shape.getPositionY() >= screenHeight - 100) && !(shape.getPositionY() <= 0))
 	{
@@ -53,5 +60,13 @@ void GameEngine::applyForce(Shape& shape, int screenWidth, int screenHeight)
 	else if ((shape.getYVelocity() >= (screenHeight - 100) - (shape.getPositionY() - 100)))
 	{
 		shape.setPositionVector(shape.getPositionX(), shape.getPositionY() + (screenHeight - 100) - shape.getPositionY());
+	}
+	else if (shape.getPositionY() >= screenHeight - 100)
+	{
+		shape.setPositionVector(shape.getPositionX(), shape.getPositionY() - 1);
+	}
+	else if (shape.getPositionY() <= 0)
+	{
+		shape.setPositionVector(shape.getPositionX(), shape.getPositionY() + 1);
 	}
 }
