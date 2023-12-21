@@ -47,10 +47,18 @@ void GameEngine::applyForce(Shape& shape, int screenWidth, int screenHeight)
 	else if (shape.getPositionX() >= screenWidth - 100)
 	{
 		shape.setPositionVector(shape.getPositionX() - 1, shape.getPositionY());
+		if (shape.getIsProjectile() == true)
+		{
+			shape.setIsDeleted(true);
+		}
 	}
 	else if (shape.getPositionX() <= 0)
 	{
 		shape.setPositionVector(shape.getPositionX() + 1, shape.getPositionY());
+		if (shape.getIsProjectile() == true)
+		{
+			shape.setIsDeleted(true);
+		}
 	}
 	if (!(shape.getPositionY() >= screenHeight - 100) && !(shape.getPositionY() <= 0))
 	{
@@ -64,9 +72,17 @@ void GameEngine::applyForce(Shape& shape, int screenWidth, int screenHeight)
 	else if (shape.getPositionY() >= screenHeight - 100)
 	{
 		shape.setPositionVector(shape.getPositionX(), shape.getPositionY() - 1);
+		if (shape.getIsProjectile() == true)
+		{
+			shape.setIsDeleted(true);
+		}
 	}
 	else if (shape.getPositionY() <= 0)
 	{
 		shape.setPositionVector(shape.getPositionX(), shape.getPositionY() + 1);
+		if (shape.getIsProjectile() == true)
+		{
+			shape.setIsDeleted(true);
+		}
 	}
 }

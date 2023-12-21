@@ -13,6 +13,7 @@ private:
 	float yVelocity;
 	bool isPlayer;
 	bool isProjectile;
+	bool isDeleted;
 	float spriteSizeX;
 	float spriteSizeY;
 	int level;
@@ -44,4 +45,6 @@ public:
 	void setViewBox(float x, float y);
 	bool getIsProjectile() const;
 	void setIsProjectile(bool isProjectile);
+	bool getIsDeleted() const;
+	void setIsDeleted(bool isDeleted);
 };

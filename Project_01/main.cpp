@@ -26,12 +26,6 @@ int main()
     myObject.setPositionVector(100, 100);
     myObject.setViewBox(0,0);
 
-    Shape bullet;
-    bullet.setImage("can.png");
-    bullet.setSpriteTexture();
-    bullet.setSize(0.1f,0.1f);
-    bullet.setPositionVector(100 + 100, 100 + 50);
-    bullet.setXVelocity(5.0f);
 
     GameEngine* Engine = new GameEngine();
     GameCheck* Check = new GameCheck();
@@ -47,13 +41,11 @@ int main()
         }
 
         Engine->applyGameEngine(myObject, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
-        Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
-        Check->applyGameCheck(myObject, background);
+        Check->applyGameCheck(myObject, background, window, Engine, clock);
         
         window.clear();
         background.draw(window);
         myObject.draw(window);
-        bullet.draw(window);
         window.display();
     }
 }

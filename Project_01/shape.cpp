@@ -8,6 +8,7 @@ Shape::Shape()
 	this->hasGravity = false;
 	this->isPlayer = false;
 	this->isProjectile = false;
+	this->isDeleted = false;
 }
 
 Shape::~Shape()
@@ -97,7 +98,10 @@ void Shape::setSpriteTexture()
 
 void Shape::draw(sf::RenderWindow& window)
 {
-	window.draw(*this);
+	if (this->isDeleted == false)
+	{
+		window.draw(*this);
+	}
 }
 
 void Shape::setSize(float x, float y)
@@ -128,4 +132,14 @@ bool Shape::getIsProjectile() const
 void Shape::setIsProjectile(bool isProjectile)
 {
 	this->isProjectile = isProjectile;
+}
+
+bool Shape::getIsDeleted() const
+{
+	return this->isDeleted;
+}
+
+void Shape::setIsDeleted(bool isDeleted)
+{
+	this->isDeleted = isDeleted;
 }

@@ -8,6 +8,8 @@ GameCheck::GameCheck()
 	this->SKeyPressed = false;
 	this->AKeyPressed = false;
 	this->DKeyPressed = false;
+	this->FKeyPressed = false;
+	this->facingDirection = "None";
 	this->counter = 0;
 	this->backgroundState = 0;
 	this->states[0] = "background.jpg";
@@ -40,30 +42,50 @@ void GameCheck::setDKeyPressed(bool DKeyPressed)
 	this->DKeyPressed = DKeyPressed;
 }
 
+void GameCheck::setFKeyPressed(bool FKeyPressed)
+{
+	this->FKeyPressed = FKeyPressed;
+}
+
+void GameCheck::setFacingDirection(std::string facingDirection)
+{
+	this->facingDirection = facingDirection;
+}
+
 bool GameCheck::getWKeyPressed() const
 {
-	return WKeyPressed;
+	return this->WKeyPressed;
 }
 
 bool GameCheck::getSKeyPressed() const
 {
-	return SKeyPressed;
+	return this->SKeyPressed;
 }
 
 bool GameCheck::getAKeyPressed() const
 {
-	return AKeyPressed;
+	return this->AKeyPressed;
 }
 
 bool GameCheck::getDKeyPressed() const
 {
-	return DKeyPressed;
+	return this->DKeyPressed;
 }
 
-void GameCheck::applyGameCheck(Shape& shape, Background& background)
+bool GameCheck::getFKeyPressed() const
+{
+	return this->FKeyPressed;
+}
+
+std::string GameCheck::getFacingDirection() const
+{
+	return this->facingDirection;
+}
+
+void GameCheck::applyGameCheck(Shape& shape, Background& background, sf::RenderWindow& window, GameEngine* Engine, sf::Clock clock)
 {
 	this->keyCheck();
-	this->playerCheck(shape);
+	this->playerCheck(shape, window, Engine, clock);
 	this->gameStateCheck(shape, background);
 }
 
@@ -72,6 +94,7 @@ void GameCheck::keyCheck()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
 		this->WKeyPressed = true;
+		this->facingDirection = "N";
 	}
 	else
 	{
@@ -81,6 +104,7 @@ void GameCheck::keyCheck()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
 		this->SKeyPressed = true;
+		this->facingDirection = "S";
 	}
 	else
 	{
@@ -90,6 +114,7 @@ void GameCheck::keyCheck()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
 		this->AKeyPressed = true;
+		this->facingDirection = "W";
 	}
 	else
 	{
@@ -99,14 +124,24 @@ void GameCheck::keyCheck()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
 		this->DKeyPressed = true;
+		this->facingDirection = "E";
 	}
 	else
 	{
 		this->DKeyPressed = false;
 	}
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+	{
+		this->FKeyPressed = true;
+	}
+	else
+	{
+		this->FKeyPressed = false;
+
+	}
 }
 
-void GameCheck::playerCheck(Shape& shape)
+void GameCheck::playerCheck(Shape& shape, sf::RenderWindow& window, GameEngine* Engine, sf::Clock clock)
 {
 	if (shape.getIsPlayer() == false)
 	{
@@ -186,6 +221,61 @@ void GameCheck::playerCheck(Shape& shape)
 		if (this->AKeyPressed == false && this->DKeyPressed == false)
 		{
 			shape.setXVelocity(0.0f);
+		}
+		if (this->FKeyPressed == true)
+		{
+			if (facingDirection == "N")
+			{
+				std::cout << "this ran!" << std::endl;
+				Shape bullet;
+				bullet.setImage("can.png");
+				bullet.setSpriteTexture();
+				bullet.setSize(0.1f, 0.1f);
+				bullet.setPositionVector(100 + 100, 100 + 50);
+				bullet.setYVelocity(-5.0f);
+				bullet.setIsProjectile(true);
+				Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+				bullet.draw(window);
+			}
+			else if (facingDirection == "S")
+			{
+				std::cout << "this ran!" << std::endl;
+				Shape bullet;
+				bullet.setImage("can.png");
+				bullet.setSpriteTexture();
+				bullet.setSize(0.1f, 0.1f);
+				bullet.setPositionVector(100 + 100, 100 + 50);
+				bullet.setYVelocity(5.0f);
+				bullet.setIsProjectile(true);
+				Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+				bullet.draw(window);
+			}
+			else if (facingDirection == "E")
+			{
+				std::cout << "this ran!" << std::endl;
+				Shape bullet;
+				bullet.setImage("can.png");
+				bullet.setSpriteTexture();
+				bullet.setSize(0.1f, 0.1f);
+				bullet.setPositionVector(100 + 100, 100 + 50);
+				bullet.setXVelocity(5.0f);
+				bullet.setIsProjectile(true);
+				Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+				bullet.draw(window);
+			}
+			else if (facingDirection == "W")
+			{
+				std::cout << "this ran!" << std::endl;
+				Shape bullet;
+				bullet.setImage("can.png");
+				bullet.setSpriteTexture();
+				bullet.setSize(0.1f, 0.1f);
+				bullet.setPositionVector(100 + 100, 100 + 50);
+				bullet.setXVelocity(-5.0f);
+				bullet.setIsProjectile(true);
+				Engine->applyGameEngine(bullet, SCREEN_WIDTH, SCREEN_HEIGHT, clock);
+				bullet.draw(window);
+			}
 		}
 	}
 }
